@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+    
+    .calculator {
+        background-color: #333;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .display {
+        margin-bottom: 20px;
+    }
+    
+    .display div {
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        font-size: 2em;
+        padding: 10px;
+        border: none;
+        text-align: right;
+        border-radius: 5px;
+    }
+    
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    button {
+        background-color: #555;
+        border: none;
+        padding: 20px;
+        font-size: 1.5em;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    button:hover {
+        background-color: #777;
+    }
+    
+    button:nth-child(4n) {
+        background-color: #f39c12;
+    }
+    
+    button:nth-child(4n):hover {
+        background-color: #e67e22;
+    }
+
+</style>
+    
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <div id="op">0</div>
+        </div>
+        <div class="buttons">
+            <!-- <button onclick="backspace()">←</button> -->
+
+            
+            <button onclick="cal('7')">7</button>
+            <button onclick="cal('8')">8</button>
+            <button onclick="cal('9')">9</button>
+            <button onclick="cal('/')">&divide;</button>
+
+            <button onclick="cal('4')">4</button>
+            <button onclick="cal('5')">5</button>
+            <button onclick="cal('6')">6</button>
+            <button onclick="cal('*')">&times;</button>
+
+            <button onclick="cal('1')">1</button>
+            <button onclick="cal('2')">2</button>
+            <button onclick="cal('3')">3</button>
+            <button onclick="cal('-')">&minus;</button>
+
+            <button onclick="cal('0')">0</button>
+            <button onclick="cal('.')">.</button>
+            <button onclick="equal('=')">=</button>
+            <button onclick="cal('+')">&#43;</button>
+
+            <button onclick="backspace()">←</button>
+            <button onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+
+    <script>
+        let op = document.getElementById("op") 
+        let Simple = document.getElementsByClassName("display");
+        function cal(input){
+            if(op.innerHTML === "0"){
+                op.innerHTML =  input ;
+            }
+            else{
+                op.innerHTML = op.innerHTML+ input ;
+            }
+        }
+
+        function equal(){
+            op.innerHTML = eval(op.innerHTML)
+        }
+
+        function backspace(){
+            op.innerHTML = op.innerHTML.slice(0,-1) || "0";
+          
+        }
+        function clearDisplay(){
+            op.innerHTML = op.innerHTML.clearDisplay|| "0";
+        }
+        
+    </script>
+</body>
+</html>
